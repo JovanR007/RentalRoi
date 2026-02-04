@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    /* Brand Palette */
+    --color-brand-50: #f0f9ff;
+    --color-brand-100: #e0f2fe;
+    --color-brand-200: #bae6fd;
+    --color-brand-300: #7dd3fc;
+    --color-brand-400: #38bdf8;
+    --color-brand-500: #0ea5e9;
+    --color-brand-600: #0284c7;
+    --color-brand-700: #0369a1;
+    --color-brand-800: #075985;
+    --color-brand-900: #0c4a6e;
+    --color-brand-950: #082f49;
+
+    --color-accent-50: #f0fdfa;
+    --color-accent-500: #14b8a6;
+    --color-accent-600: #0d9488;
+
+    /* Semantic Colors */
+    --color-background: #020617;
+    /* Slate 950 */
+    --color-foreground: #f8fafc;
+    /* Slate 50 */
+
+    --color-card: #0f172a;
+    /* Slate 900 */
+    --color-card-foreground: #f8fafc;
+
+    --color-popover: #0f172a;
+    --color-popover-foreground: #f8fafc;
+
+    --color-primary: #38bdf8;
+    /* Brand 400 */
+    --color-primary-foreground: #020617;
+
+    --color-secondary: #1e293b;
+    /* Slate 800 */
+    --color-secondary-foreground: #f8fafc;
+
+    --color-muted: #1e293b;
+    --color-muted-foreground: #94a3b8;
+
+    --color-accent: #1e293b;
+    --color-accent-foreground: #f8fafc;
+
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #f8fafc;
+
+    --color-border: #1e293b;
+    --color-input: #1e293b;
+    --color-ring: #38bdf8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Utilities */
+@layer utilities {
+    .glass-panel {
+        @apply bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-xl;
+    }
+
+    .glass-input {
+        @apply bg-black/20 border-white/10 active:border-brand-400 focus:border-brand-400 transition-colors backdrop-blur-sm placeholder:text-white/30 text-white;
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-300 via-brand-100 to-white;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@layer base {
+    body {
+        @apply bg-background text-foreground;
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    * {
+        @apply border-border;
+    }
 }
